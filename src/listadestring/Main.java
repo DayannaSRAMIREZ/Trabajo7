@@ -36,19 +36,27 @@ public class Main {
         nombresList.set(0, "Amador");
         nombresList.remove(2);
         nombresList.remove("Adonis");
+        System.out.println();
         System.out.println(nombresList.contains("Maria"));
         borrarTodos("Adonis", nombresList);
         System.out.println(nombresList);
     }
 
     public static List<String> borrarTodos(String nombre, List<String> milista) {
-
-        if (milista.contains(nombre)) {
-            milista.remove(nombre);
-            if (milista.contains(nombre)) {
-                borrarTodos(nombre, milista);
+        int contador = 0;
+        for (String elemento : milista) {
+            if (elemento.equals(nombre)) {
+                contador++;
             }
         }
+        for (int i = 0; i <= contador; i++) {
+            milista.remove(nombre);
+        }
+        /*
+        if (milista.contains(nombre)) {
+            milista.remove(nombre);
+            borrarTodos(nombre, milista);
+        }*/
         return milista;
     }
 }

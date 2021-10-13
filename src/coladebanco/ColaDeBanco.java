@@ -25,30 +25,20 @@ public class ColaDeBanco {
 
     public Deque<Persona> agregarPersona(Persona persona) {
         if (!personasList.contains(persona)) {
-            personasList.add(persona);
+            if (persona.edad > 60) {
+                personasList.addFirst(persona);
+            } else {
+                personasList.add(persona);
+            }
         }
         return personasList;
     }
-    public Persona atender() {
-        Persona eliminada= personasList.element();
-        if (hayMayores()) {
-            for (Persona persona : personasList) {
-                if (persona.edad > 60) {
-                    eliminada = persona;
-                    personasList.remove(persona);
-                    break;
-                }
-            }
-        } else {
-            personasList.remove(personasList.element());
-        }
-        return eliminada;
 
-    }
-    public Boolean hayMayores() {
-        for (Persona persona : personasList) {
-            if (persona.edad > 60) return true;
-        }
-        return true;
+    public Persona atender() {
+        Persona atendida = personasList.element();
+
+        personasList.remove(personasList.element());
+        return atendida;
+
     }
 }
